@@ -28,11 +28,11 @@
 
           <ul class="navbar-nav ml-md-auto flex-row d-md-flex align-items-center justify-content-around">
             <template v-if="isLogged">
-              <li class="nav-item">
+              <!--<li class="nav-item">
                 <router-link :to="{ name: 'threads.create' }" exact class="text-20 btn btn-icon btn-transparent btn-light">
                   <plus-icon></plus-icon>
                 </router-link>
-              </li>
+              </li>-->
               <li class="nav-item nav-item-icon">
                 <router-link :to="{ name: 'notifications.show' }" class="text-20 btn btn-icon btn-transparent btn-light">
                   <bell-icon />
@@ -51,10 +51,10 @@
                       </router-link>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <router-link class="dropdown-item" :to="{ name: 'users.show', params: { username: currentUser.username } }" exact>
+                    <!--<router-link class="dropdown-item" :to="{ name: 'users.show', params: { username: currentUser.username } }" exact>
                       <account-icon class="mr-1"></account-icon>
                       个人中心
-                    </router-link>
+                    </router-link>-->
                     <router-link class="dropdown-item" :to="{ name: 'user.profile' }" exact>
                       <account-edit-icon class="mr-1"></account-edit-icon>
                       编辑资料
