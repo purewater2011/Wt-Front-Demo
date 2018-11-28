@@ -2,7 +2,7 @@
   <div id="wrapper" class="h-100" :class="{toggled: isToggled}">
     <div id="page-content-wrapper" class="w-100 position-absolute">
       <navbar v-if="shouldShowNavbar" />
-      <div class="main-content" :class="{'container my-3': withContainer}">
+      <div class="main-content" :class="{withContainer}">
         <router-view />
       </div>
     </div>

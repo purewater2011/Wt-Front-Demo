@@ -5,11 +5,21 @@ import store from './vuex'
 import router from './router'
 import Root from './root'
 import http from '@utils/http'
-import { Message } from 'element-ui'
+import { Message, Button, Row, Col, Icon, Footer, Input, Form, FormItem } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/message.css'
 import 'element-ui/lib/theme-chalk/icon.css'
 
 Vue.config.productionTip = false
+
+Vue.component(Button.name, Button)
+Vue.component(Row.name, Row)
+Vue.component(Col.name, Col)
+Vue.component(Icon.name, Icon)
+Vue.component(Footer.name, Footer)
+Vue.component(Input.name, Input)
+Vue.component(Form.name, Form)
+Vue.component(FormItem.name, FormItem)
 
 sync(store, router)
 

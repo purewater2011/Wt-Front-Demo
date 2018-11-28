@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white bg-white shadow-6 sticky-top">
-    <div class="container">
+    <div class="">
       <nav class="navbar px-0 py-1 text-14 navbar-expand-lg navbar-light">
         <router-link :to="{ name: 'home' }" class="navbar-brand text-22 d-flex align-items-center antialiased">
           <img class="mr-2 avatar-40" src="/logo.svg" alt="开发者联盟">开发者<span class="text-14 text-muted ml-1">| 商家好助手</span><sup class="ml-1 text-10 text-danger"> Hot</sup> </router-link>
@@ -9,33 +9,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav flex-row align-items-center justify-content-center py-sm-2 py-md-0 mx-auto">
-            <!--<router-link :to="{ name: 'home' }" exact tag="li" class="nav-item">
-              <a href="javascript:void(0);" class="nav-link">首页</a>
-            </router-link>-->
             <li class="nav-item">
-              <dropdown>
-                <a class="nav-link el-dropdown-link" href="#">产品<i class="el-icon-arrow-down el-icon--right"></i></a>
-                <dropdown-menu slot="dropdown">
-                  <dropdown-item>黄金糕</dropdown-item>
-                  <dropdown-item>狮子头</dropdown-item>
-                  <dropdown-item>螺蛳粉</dropdown-item>
-                  <dropdown-item>双皮奶</dropdown-item>
-                  <dropdown-item>蚵仔煎</dropdown-item>
-                </dropdown-menu>
-              </dropdown>
+              <a class="nav-link" href="#">客户案例</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">客户案例</a>
+              <a class="nav-link" href="#">服务支持</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">服务支持</a>
-            </li>
-            <!--<router-link :to="{ name: 'nodes.show' }" exact tag="li" class="nav-item">-->
-              <!--<a href="javascript:void(0);" class="nav-link">节点</a>-->
-            <!--</router-link>-->
-            <!--<li class="nav-item">-->
-              <!--<nav-search />-->
-            <!--</li>-->
           </ul>
 
           <ul class="navbar-nav ml-md-auto flex-row d-md-flex align-items-center justify-content-around">
@@ -57,7 +36,11 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
                     <div class="dropdown-item">
-                        <div class="text-16 text-gray-30">{{ currentUser.name }}</div>
+                      <div class="text-16 text-gray-30">{{ currentUser.name }}</div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item">
+                      <span @click.native="setLeftMenuCollpose">{{ leftMenuCollapse ? '展开' : '收起'}}菜单</span>
                     </div>
                     <div class="dropdown-divider"></div>
                     <!--<router-link class="dropdown-item" :to="{ name: 'users.show', params: { username: currentUser.username } }" exact>
@@ -66,7 +49,7 @@
                     </router-link>-->
                     <router-link class="dropdown-item" :to="{ name: 'admin.home' }" exact>
                       <account-icon class="mr-1"></account-icon>
-                      进入管理后台
+                      管理后台
                     </router-link>
                     <router-link class="dropdown-item" :to="{ name: 'user.profile' }" exact>
                       <account-edit-icon class="mr-1"></account-edit-icon>
@@ -93,43 +76,41 @@
 </template>
 
 <script>
-import MenuIcon from '@icons/menu'
-import BellIcon from '@icons/bell'
-import PlusIcon from '@icons/plus'
-import MagnifyIcon from '@icons/magnify'
-import AccountIcon from '@icons/account'
-import AccountEditIcon from '@icons/account-edit'
-import LogoutVariant from '@icons/logout-variant'
-import NavSearch from './nav-search'
-import { mapGetters, mapActions } from 'vuex'
-import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
+  import MenuIcon from '@icons/menu'
+  import BellIcon from '@icons/bell'
+  import PlusIcon from '@icons/plus'
+  import MagnifyIcon from '@icons/magnify'
+  import AccountIcon from '@icons/account'
+  import AccountEditIcon from '@icons/account-edit'
+  import LogoutVariant from '@icons/logout-variant'
+  import { mapGetters, mapActions } from 'vuex'
+  import { Dropdown, DropdownMenu, DropdownItem } from 'element-ui'
 
-export default {
-  components: {
-    MenuIcon,
-    BellIcon,
-    PlusIcon,
-    AccountIcon,
-    MagnifyIcon,
-    AccountEditIcon,
-    LogoutVariant,
-    NavSearch,
-    Dropdown,
-    DropdownMenu,
-    DropdownItem
-  },
-  computed: {
-    ...mapGetters(['isLogged', 'currentUser'])
-  },
-  methods: {
-    ...mapActions(['logout', 'toggle'])
+  export default {
+    components: {
+      MenuIcon,
+      BellIcon,
+      PlusIcon,
+      AccountIcon,
+      MagnifyIcon,
+      AccountEditIcon,
+      LogoutVariant,
+      Dropdown,
+      DropdownMenu,
+      DropdownItem
+    },
+    computed: {
+      ...mapGetters(['leftMenuCollapse', 'isLogged', 'currentUser'])
+    },
+    methods: {
+      ...mapActions(['logout', 'toggle', 'setLeftMenuCollapse'])
+    }
   }
-}
 </script>
 
 <style lang="scss">
-.navbar-nav .nav-item {
-  margin-left: 10px;
-  margin-right: 10px;
-}
+  .navbar-nav .nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 </style>

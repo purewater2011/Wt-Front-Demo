@@ -6,13 +6,14 @@ import { routes as auth } from '@modules/auth'
 import { routes as home } from '@modules/home'
 import { routes as users } from '@modules/users'
 import { routes as notifications } from '@modules/notifications'
+import { routes as admin } from '@modules/admin'
 
 Vue.use(Router)
 
 const AppRoute = {
   path: '/',
   component: () => import('../app'),
-  children: [...auth, ...element, ...home, ...users, ...notifications]
+  children: [...auth, ...element, ...home, ...users, ...notifications, ...admin]
 }
 
 const routes = [AppRoute]
