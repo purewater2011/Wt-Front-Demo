@@ -5,5 +5,8 @@ export default {
   },
   [TYPES.SET_LEFTMENU_COLLAPSE] (state, value) {
     state.leftMenuCollapse = value
+  },
+  [TYPES.SET_LEFTMENUS] (state, value) {
+    state.leftMenus = value
   }
 }

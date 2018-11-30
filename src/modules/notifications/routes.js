@@ -4,7 +4,9 @@ export default [
     name: 'notifications.show',
     component: () => import('./show'),
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      navbar: false,
+      adminnavbar: true
     }
   }
 ]

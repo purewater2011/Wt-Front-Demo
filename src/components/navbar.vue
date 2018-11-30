@@ -45,11 +45,11 @@
                   <plus-icon></plus-icon>
                 </router-link>
               </li>-->
-              <li class="nav-item nav-item-icon">
+              <!--<li class="nav-item nav-item-icon">
                 <router-link :to="{ name: 'notifications.show' }" class="text-20 btn btn-icon btn-transparent btn-light">
                   <bell-icon />
                 </router-link>
-              </li>
+              </li>-->
               <li class="nav-item">
                 <div class="btn-group">
                   <a href="#" class="dropdown-toggle cursor-pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

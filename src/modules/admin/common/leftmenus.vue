@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    :collapse="isCollapse"
+    :collapse="leftMenuCollapse"
     :default-active="defaultActive"
     class="el-menu-vertical-demo"
     @open="handleOpen"
@@ -8,7 +8,7 @@
     :background-color="backgroundColor"
     :text-color="textColor"
     :active-text-color="activeTextColor">
-    <template v-for="menu in menus">
+    <template v-for="menu in leftMenus">
       <el-submenu v-if="menu.child" :index="menu.id">
         <template slot="title">
           <i :class="menu.icon ? menu.icon : 'el-icon-location'"></i>
@@ -35,7 +35,7 @@
 </template>
 <script>
   import { Menu as ElMenu, MenuItem as ElMenuItem, MenuItemGroup as ElMenuItemGroup, Submenu as ElSubmenu } from 'element-ui'
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   export default {
     data () {
       return {
@@ -44,19 +44,14 @@
         backgroundColor: '#fff',
         textColor: 'black',
         activeTextColor: 'blue',
-        menus: [
-          {id: '1', icon: 'el-icon-menu', title: 'menu1', route: '', child: [{id: '2', title: 'submenu1-1'}, {id: '3', title: 'submenu1-2'}, {id: '4', title: 'submenu1-3', child: [{id: '5', title: 'submenu1-3-1'}]}]},
-          {id: '6', icon: 'el-icon-location', title: 'menu2', route: ''},
-          {id: '7', icon: 'el-icon-document', title: 'menu3', route: ''},
-          {id: '8', icon: 'el-icon-setting', title: 'menu4', route: ''}
-        ]
+        menus: []
       }
     },
     components: {
       ElMenu, ElMenuItem, ElMenuItemGroup, ElSubmenu
     },
     computed: {
-      ...mapGetters(['leftMenuCollapse'])
+      ...mapGetters(['leftMenuCollapse', 'leftMenus'])
     },
     methods: {
       handleOpen (key, keyPath) {

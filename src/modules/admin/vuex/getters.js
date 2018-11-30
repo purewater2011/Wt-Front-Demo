@@ -1,1 +1,2 @@
-export const leftMenuCollapse = ({ leftMenuCollapse2 }) => leftMenuCollapse2
+export const leftMenuCollapse = ({ leftMenuCollapse }) => leftMenuCollapse
+export const leftMenus = ({ leftMenus }) => leftMenus

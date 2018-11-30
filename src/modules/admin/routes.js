@@ -1,3 +1,7 @@
+const META = {
+  requiresAuth: true,
+  navbar: false
+}
 export default [
   {
     path: '/admin',
@@ -6,10 +10,7 @@ export default [
       {
         path: 'home',
         name: 'admin.home',
-        meta: {
-          requiresAuth: true,
-          navbar: false
-        },
+        meta: META,
         component: () => import('./common/basic')
       }
     ]

@@ -2,7 +2,7 @@
   <div class="bg-white bg-white shadow-6 sticky-top">
     <div class="">
       <nav class="navbar px-0 py-1 text-14 navbar-expand-lg navbar-light">
-        <router-link :to="{ name: 'home' }" class="navbar-brand text-22 d-flex align-items-center antialiased">
+        <router-link :to="{ name: 'admin.home' }" class="navbar-brand text-22 d-flex align-items-center antialiased">
           <img class="mr-2 avatar-40" src="/logo.svg" alt="开发者联盟">开发者<span class="text-14 text-muted ml-1">| 商家好助手</span><sup class="ml-1 text-10 text-danger"> Hot</sup> </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -40,17 +40,17 @@
                     </div>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item">
-                      <span @click.native="setLeftMenuCollpose">{{ leftMenuCollapse ? '展开' : '收起'}}菜单</span>
+                      <span @click="setLeftCollapse(leftMenuCollapse)">{{ leftMenuCollapse === true ? '展开' : '收起'}}菜单</span>
                     </div>
                     <div class="dropdown-divider"></div>
                     <!--<router-link class="dropdown-item" :to="{ name: 'users.show', params: { username: currentUser.username } }" exact>
                       <account-icon class="mr-1"></account-icon>
                       个人中心
                     </router-link>-->
-                    <router-link class="dropdown-item" :to="{ name: 'admin.home' }" exact>
-                      <account-icon class="mr-1"></account-icon>
-                      管理后台
-                    </router-link>
+                    <!--<router-link class="dropdown-item" :to="{ name: 'admin.home' }" exact>-->
+                      <!--<account-icon class="mr-1"></account-icon>-->
+                      <!--管理后台-->
+                    <!--</router-link>-->
                     <router-link class="dropdown-item" :to="{ name: 'user.profile' }" exact>
                       <account-edit-icon class="mr-1"></account-edit-icon>
                       编辑资料
@@ -100,10 +100,13 @@
       DropdownItem
     },
     computed: {
-      ...mapGetters(['leftMenuCollapse', 'isLogged', 'currentUser'])
+      ...mapGetters(['isLogged', 'currentUser', 'leftMenuCollapse'])
     },
     methods: {
-      ...mapActions(['logout', 'toggle', 'setLeftMenuCollapse'])
+      ...mapActions(['logout', 'toggle', 'setLeftCollapse'])
+    },
+    async mounted () {
+      await this.$store.dispatch('checkMenuStatus')
     }
   }
 </script>

@@ -31,9 +31,6 @@
     },
     methods: {
       ...mapActions(['checkMenuStatus'])
-    },
-    created () {
-      this.$store.dispatch('checkMenuStatus')
     }
   }
 </script>

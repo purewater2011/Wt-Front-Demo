@@ -2,6 +2,7 @@
   <div id="wrapper" class="h-100" :class="{toggled: isToggled}">
     <div id="page-content-wrapper" class="w-100 position-absolute">
       <navbar v-if="shouldShowNavbar" />
+      <admin-navbar v-if="shouldShowAdminNavbar" />
       <div class="main-content" :class="{withContainer}">
         <router-view />
       </div>
@@ -19,13 +20,15 @@
   import Navbar from '@components/navbar'
   import Sidebar from '@components/sidebar'
   import ArrowUpIcon from '@icons/arrow-up'
+  import AdminNavbar from '@modules/admin/common/adminnavbar'
 
   export default {
     name: 'app',
     components: {
       Navbar,
       Sidebar,
-      ArrowUpIcon
+      ArrowUpIcon,
+      AdminNavbar
     },
     computed: {
       ...mapGetters(['currentUser', 'isToggled']),
@@ -36,6 +39,12 @@
         return (
           typeof this.$route.meta['navbar'] === 'undefined' ||
           !!this.$route.meta['navbar']
+        )
+      },
+      shouldShowAdminNavbar () {
+        return (
+          !typeof this.$route.meta['adminnavbar'] === 'undefined' ||
+          !!this.$route.meta['adminnavbar']
         )
       },
       withContainer () {
