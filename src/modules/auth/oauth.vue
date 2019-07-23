@@ -11,8 +11,9 @@ export default {
   mounted () {
     let platform = this.$route.params.platform
     if (this.$route.name == 'auth.oauth_redirect') {
-      this.$http.get('oauth/redirect-url/' + platform).then(redirectUrl => {
-        window.location = redirectUrl
+      let currentUrl = process.env.VUE_APP_API_URL
+      this.$http.get('/OA/getLoginUrl?redirect=' + currentUrl + '?p=' + platform).then(redirectUrl => {
+        window.location = redirectUrl.data
       })
     } else {
       this.$http.get('oauth/callback/' + platform).then(response => {

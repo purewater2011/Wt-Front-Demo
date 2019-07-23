@@ -14,6 +14,9 @@ export default http => {
   // https://github.com/mzabriskie/axios#interceptors
   http.interceptors.response.use(
     response => {
+      if (response.data && response.data.code !== 0) {
+        Message.error(response.data.msg)
+      }
       return response.data
     },
     /**
@@ -22,6 +25,7 @@ export default http => {
      * requests
      */
     error => {
+      console.log('error', error)
       if (!error['response']) {
         return Promise.reject(error)
       }

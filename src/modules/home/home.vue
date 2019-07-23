@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="body">
+    <!--<div class="body">
       <div class="banner">
         <carousel height="550px">
           <carousel-item v-for="item in 4" :key="item">
@@ -62,7 +62,7 @@
           </el-col>
         </el-row>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -109,6 +109,13 @@ export default {
   },
   mounted () {
     this.loadThreads()
+    this.$loading({
+      lock: true,
+      text: '跳转中',
+      spinner: 'el-icon-loading',
+      background: 'rgba(0, 0, 0, 0.7)'
+    })
+    window.location = '/admin/home'
   }
 }
 </script>

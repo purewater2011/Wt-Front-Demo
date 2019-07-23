@@ -17,7 +17,7 @@ const beforeEach = (to, from, next) => {
     .catch(() => {
       if (needAuth(to)) {
         // No token, or it is invalid
-        return next({ name: 'auth.login' }) // redirect to login
+        return next({ name: 'auth.oauth_redirect', params: { platform: 'web' } }) // redirect to login
       }
       next()
     })

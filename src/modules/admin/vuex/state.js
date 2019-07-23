@@ -1,4 +1,9 @@
 export default {
   leftMenuCollapse: null,
-  leftMenus: []
+  leftMenus: [],
+  visitedViews: [],
+  cachedViews: [],
+  defaultMenu: {},
+  mainHeight: '',
+  userdetailinfo: {}
 }

@@ -14,6 +14,7 @@ interceptors(http)
  */
 export function setToken (token) {
   http.defaults.headers.common.Authorization = `Bearer ${token}`
+  http.defaults.headers.common['X-Mx-ReqToken'] = `${token}`
 }
 
 export default http

@@ -1,7 +1,8 @@
 <template>
   <el-menu
+    :unique-opened="true"
     :collapse="leftMenuCollapse"
-    :default-active="defaultActive"
+    :default-active="defaultMenu.id ? defaultMenu.id : '1'"
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
@@ -18,15 +19,15 @@
           <el-submenu v-if="mm.child" :index="mm.id">
             <template slot="title">{{mm.title}}</template>
             <template v-for="mmm in mm.child">
-              <el-menu-item :index="mmm.id">{{mmm.title}}</el-menu-item>
+              <el-menu-item :index="mmm.id" @click="handleClick(mmm)">{{mmm.title}}</el-menu-item>
             </template>
           </el-submenu>
           <el-menu-item-group v-else>
-            <el-menu-item :index="mm.id">{{mm.title}}</el-menu-item>
+            <el-menu-item :index="mm.id" @click="handleClick(mm)">{{mm.title}}</el-menu-item>
           </el-menu-item-group>
         </template>
       </el-submenu>
-      <el-menu-item v-else :index="menu.id">
+      <el-menu-item v-else :index="menu.id" @click="handleClick(menu)">
         <i :class="menu.icon ? menu.icon : 'el-icon-location'"></i>
         <span>{{menu.title}}</span>
       </el-menu-item>
@@ -40,10 +41,10 @@
     data () {
       return {
         isCollapse: false,
-        defaultActive: '5',
+        defaultActive: '1',
         backgroundColor: '#fff',
         textColor: 'black',
-        activeTextColor: 'blue',
+        activeTextColor: '#409EFF',
         menus: []
       }
     },
@@ -51,7 +52,7 @@
       ElMenu, ElMenuItem, ElMenuItemGroup, ElSubmenu
     },
     computed: {
-      ...mapGetters(['leftMenuCollapse', 'leftMenus'])
+      ...mapGetters(['leftMenuCollapse', 'leftMenus', 'defaultMenu'])
     },
     methods: {
       handleOpen (key, keyPath) {
@@ -59,6 +60,9 @@
       },
       handleClose (key, keyPath) {
         console.log(key, keyPath)
+      },
+      handleClick (menu) {
+        this.$router.push({ name: menu.route })
       }
     }
   }
