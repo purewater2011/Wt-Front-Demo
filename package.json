@@ -21,7 +21,7 @@
     "element-ui": "^2.4.11",
     "emojify.js": "^1.1.0",
     "emojione": "^3.1.7",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "js-cookie": "^2.2.0",
     "localforage": "^1.7.2",
     "lodash": "^4.17.11",
