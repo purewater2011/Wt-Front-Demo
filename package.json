@@ -34,7 +34,7 @@
     "sass-loader": "^7.1.0",
     "tributejs": "^3.3.5",
     "typeface-ubuntu-mono": "0.0.54",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "vddl": "^0.7.1",
     "vue": "^2.5.17",
     "vue-avatar-cropper": "0.0.28",
