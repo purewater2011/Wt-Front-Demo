@@ -24,7 +24,7 @@
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "localforage": "^1.7.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mo-js": "^0.288.2",
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
