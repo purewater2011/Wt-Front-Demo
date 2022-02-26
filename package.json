@@ -29,7 +29,7 @@
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
     "popper.js": "^1.14.4",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.27.0",
     "qrcode": "^1.2.2",
     "sass-loader": "^7.1.0",
     "tributejs": "^3.3.5",
